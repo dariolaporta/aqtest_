@@ -1,26 +1,55 @@
-import React, { useState } from "react";
-import { Azamat } from "../../assets/images/images";
-import { DivDx, DivSx } from "./Styles";
+import React from "react";
+import { DivDx, DivSx, ImgDivDx, ImgDivSx } from "./Styles";
 
 interface Props {
-  url: string;
+  big_image_url: string;
   bg_sx: string;
   bg_dx: string;
+  custom_title: string;
+  img_dx: string;
+  img_sx: string;
 }
 
 const Slide = (props: Props) => {
-  const { url, bg_sx, bg_dx } = props;
-  return (
-    // <div>
-    //   <img src={url} className="image" alt="logo" />
+  const { big_image_url, bg_sx, bg_dx, img_dx, img_sx, custom_title } = props;
+  ImgDivSx.defaultProps = {
+    theme: {
+      img_sx: img_sx,
+    },
+  };
 
-    // </div>
-    <div style={{ display: "flex" }}>
-      {/* <div style={{ flex: 1 }}>hey</div>
-      <div style={{ flex: 1 }}>hey</div> */}
-      {/* <DivDx bg_dx={bg_dx} /> */}
-      <DivDx color={bg_dx} />
-      <DivSx color={bg_sx} />
+  ImgDivDx.defaultProps = {
+    theme: {
+      img_dx: img_dx,
+    },
+  };
+
+  return (
+    <div style={{ display: "flex", flex: 1, position: "relative" }}>
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
+        <img className="image" src={big_image_url} />
+      </div>
+      <DivSx color={bg_dx}>
+        <div style={{ flex: 1 }}></div>
+        <div style={{ flex: 1 }}></div>
+        <div style={{ flex: 1 }}>
+          <ImgDivSx />
+        </div>
+      </DivSx>
+      <DivDx color={bg_sx}>
+        <div style={{ flex: 1 }}></div>
+        <div style={{ flex: 1 }}>
+          <ImgDivDx />
+        </div>
+      </DivDx>
     </div>
   );
 };
