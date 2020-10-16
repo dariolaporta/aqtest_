@@ -1,5 +1,12 @@
 import React from "react";
-import { DivDx, DivSx, ImgDivDx, ImgDivSx } from "./Styles";
+import {
+  CustomTitle,
+  DivDx,
+  DivSx,
+  ImgDivDx,
+  ImgDivSx,
+  TitleContainer,
+} from "./Styles";
 
 interface Props {
   big_image_url: string;
@@ -24,8 +31,17 @@ const Slide = (props: Props) => {
     },
   };
 
+  CustomTitle.defaultProps = {
+    theme: {
+      custom_title: custom_title,
+    },
+  };
+
   return (
     <div style={{ display: "flex", flex: 1, position: "relative" }}>
+      <TitleContainer>
+        <CustomTitle>{custom_title}</CustomTitle>
+      </TitleContainer>
       <div
         style={{
           position: "absolute",

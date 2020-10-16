@@ -1,6 +1,42 @@
 import React from "react"
 import styled from "styled-components"
 
+export const TitleContainer = styled.div`
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    top: 20%;
+`
+
+export const CustomTitle = styled.div`
+    line-height: 1;
+    max-width: 1000px;
+    position: relative;
+    color: white;
+    font-family: "Tungsten Bold";
+    font-size: 80px;
+    text-transform: uppercase;
+    &:before {
+        content: " ${props => props.theme.custom_title}";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin-right: auto;
+        margin-left: auto;
+        transform: translateY(-50%);
+        background-color: transparent;
+        color: transparent;
+        font-size: 80px;
+        -webkit-text-stroke: 1px #fff;
+        z-index: 999;
+        line-height: 1;
+        opacity: 0.99;
+    }
+`
+
 export const DivDx = styled.div`
     background-color: ${props => props.color};
     flex: 1;
