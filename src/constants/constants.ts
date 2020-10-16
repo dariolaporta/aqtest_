@@ -22,7 +22,7 @@ export const slidesArray: SlideObj[] = [
     },
     {
       big_image_url: Pamela,
-      custom_title: "The wilder night",
+      custom_title: "Wilder night",
       bg_dx: palette.bg_leaves,
       bg_sx: palette.bg_primary,
       img_dx: Kevin,

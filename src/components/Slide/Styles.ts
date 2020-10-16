@@ -3,11 +3,12 @@ import styled from "styled-components"
 
 export const TitleContainer = styled.div`
     position: absolute;
-    left: 0;
-    right: 0;
+    left: -50%;
+    right: 0px;
     margin-right: auto;
     margin-left: auto;
     top: 20%;
+    max-width: 200px;   
 `
 
 export const CustomTitle = styled.div`
@@ -16,8 +17,10 @@ export const CustomTitle = styled.div`
     position: relative;
     color: white;
     font-family: "Tungsten Bold";
-    font-size: 80px;
+    font-size: 120px;
     text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 5px;
     &:before {
         content: " ${props => props.theme.custom_title}";
         position: absolute;
@@ -29,7 +32,7 @@ export const CustomTitle = styled.div`
         transform: translateY(-50%);
         background-color: transparent;
         color: transparent;
-        font-size: 80px;
+        font-size: 120px;
         -webkit-text-stroke: 1px #fff;
         z-index: 999;
         line-height: 1;
