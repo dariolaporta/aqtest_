@@ -7,7 +7,7 @@ export const TitleContainer = styled.div`
     margin-right: auto;
     margin-left: auto;
     top: 20%;
-    max-width: 200px;   
+    max-width: 30vw;  
 `
 
 export const CustomTitle = styled.div`
@@ -18,7 +18,7 @@ export const CustomTitle = styled.div`
     font-family: "Tungsten Bold";
     font-size: 15vmin;
     text-transform: uppercase;
-    text-align: left;
+    text-align: right;
     letter-spacing: 5px;
     &:before {
         content: " ${props => props.theme.custom_title}";

@@ -51,7 +51,7 @@ class App extends Component<Props, State> {
       <StepIndicator
         key={index}
         color={this.state.activeIndex === index ? palette.orange : "white"}
-        thickness={this.state.activeIndex === index ? 5 : 2}
+        thickness={this.state.activeIndex === index ? 3 : 2}
         opacity={this.state.activeIndex === index ? 1 : 0.2}
       />
     ));
