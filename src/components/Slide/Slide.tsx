@@ -6,6 +6,7 @@ import {
   ImgDivDx,
   ImgDivSx,
   Paragraph,
+  ParagraphTng,
   TitleContainer,
   TopImageContainer,
 } from "./Styles";
@@ -91,15 +92,16 @@ const Slide = (props: Props) => {
           <Paragraph>{dx_text.writer}</Paragraph>
           <Paragraph>{dx_text.date}</Paragraph>
           <div>
-            <Paragraph
+            <ParagraphTng
               style={{
                 display: "flex",
                 justifyContent: "flex-end",
                 alignItems: "center",
               }}
             >
-              {dx_text.link} <ArrowRightAltIcon style={{ marginLeft: 10 }} />
-            </Paragraph>
+              {dx_text.link}
+              <ArrowRightAltIcon style={{ marginLeft: 10 }} />
+            </ParagraphTng>
           </div>
         </div>
       </DivDx>

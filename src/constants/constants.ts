@@ -1,3 +1,4 @@
+import { orange } from "@material-ui/core/colors";
 import { Azamat, Kevin, Nicole, Oladimeji, Pamela } from "../assets/images/images";
 import SlideObj from "../types";
 
@@ -6,7 +7,8 @@ export const palette = {
     bg_sand: "#59453a",
     bg_leaves: "#38412c",
     bg_pink: "#b09396",
-    bg_brown: "#744a4a"
+    bg_brown: "#744a4a",
+    orange: "#ebab58"
 
 }
 
@@ -44,7 +46,7 @@ export const slidesArray: SlideObj[] = [
       bg_dx: palette.bg_sand,
       bg_sx: palette.bg_primary,
       img_dx: Azamat,
-      img_sx: Kevin,
+      img_sx: Pamela,
       dx_text: {
         writer: "Andrea Schiavone \n for Harpers Bazar",
         date: "November 2019",

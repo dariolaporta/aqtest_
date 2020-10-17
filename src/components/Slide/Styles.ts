@@ -82,6 +82,13 @@ export const Paragraph = styled.p`
     font-family: Roboto;
 `
 
+export const ParagraphTng = styled.p`
+    font-size: 15px;
+    margin-top: 20px;
+    font-family: Tungsten Bold;
+    letter-spacing: 1px;
+`
+
 export const TopImageContainer = styled.div`
     position: absolute;
     left: 0;

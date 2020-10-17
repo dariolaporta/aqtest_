@@ -1,13 +1,25 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import SlideObj from "../../types";
+import { Indicator } from "./Styles";
 
-const StepIndicator = () => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const Div = styled.div`
-    width: 100px;
-    height: 10px;
-    background-color: white;
-  `;
+interface Props {
+  items?: SlideObj[];
+  color?: string;
+  thickness: number;
+  opacity: number;
+}
 
-  return <Div />;
+const StepIndicator = (props: Props) => {
+  const { color, thickness, opacity } = props;
+
+  Indicator.defaultProps = {
+    theme: {
+      thickness: thickness,
+      opacity: opacity,
+    },
+  };
+
+  return <Indicator color={color} />;
 };
+
+export default StepIndicator;
