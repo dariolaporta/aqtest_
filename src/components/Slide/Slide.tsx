@@ -7,6 +7,7 @@ import {
   ImgDivSx,
   Paragraph,
   TitleContainer,
+  TopImageContainer,
 } from "./Styles";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
@@ -57,23 +58,14 @@ const Slide = (props: Props) => {
       <TitleContainer>
         <CustomTitle>{custom_title}</CustomTitle>
       </TitleContainer>
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          marginLeft: "auto",
-          marginRight: "auto",
-          zIndex: 80,
-        }}
-      >
+      <TopImageContainer>
         <img className="image" src={big_image_url} />
-      </div>
+      </TopImageContainer>
       <DivSx color={bg_dx}>
         <div style={{ flex: 1 }}></div>
         <div style={{ flex: 1 }}></div>
         <div style={{ flex: 1 }}>
-          <ImgDivSx />
+          <ImgDivSx className="image" />
         </div>
       </DivSx>
       <DivDx style={{ display: "flex", flex: 1 }} color={bg_sx}>
@@ -85,7 +77,7 @@ const Slide = (props: Props) => {
             marginRight: 30,
           }}
         >
-          <ImgDivDx />
+          <ImgDivDx className="image" />
         </div>
         <div style={{ flex: 1 }}></div>
         <div

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Cursor from "./components/Cursor/Cursor";
 import Header from "./components/Header/Header";
 import Slide from "./components/Slide/Slide";
 import { slidesArray } from "./constants/constants";
@@ -33,6 +34,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <Cursor />
         {this.renderSlides()}
       </div>
     );

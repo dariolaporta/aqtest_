@@ -81,3 +81,15 @@ export const Paragraph = styled.p`
     margin-top: 20px;
     font-family: Roboto;
 `
+
+export const TopImageContainer = styled.div`
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 80;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+`
