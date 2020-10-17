@@ -9,6 +9,7 @@ import SlideObj from "./types";
 
 interface State {
   activeIndex: number;
+  viewWidth: number;
 }
 
 interface Props {}
@@ -17,8 +18,23 @@ class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      activeIndex: 4,
+      activeIndex: 0,
+      viewWidth: 0,
     };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ viewWidth: window.innerWidth });
   }
 
   renderDxText = (slide: SlideObj) => {
@@ -33,6 +49,7 @@ class App extends Component<Props, State> {
   renderIndicators = () => {
     return slidesArray.map((el, index) => (
       <StepIndicator
+        key={index}
         color={this.state.activeIndex === index ? palette.orange : "white"}
         thickness={this.state.activeIndex === index ? 5 : 2}
         opacity={this.state.activeIndex === index ? 1 : 0.2}
@@ -54,7 +71,11 @@ class App extends Component<Props, State> {
       />
     );
   };
+
+  changeIndex = () => {};
+
   render() {
+    const { viewWidth } = this.state;
     return (
       <div className="App">
         <Header />
@@ -66,7 +87,7 @@ class App extends Component<Props, State> {
             right: 20,
             left: 0,
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: viewWidth > 500 ? "flex-end" : "center",
             zIndex: 9999,
             bottom: 20,
           }}

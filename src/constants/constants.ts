@@ -1,4 +1,3 @@
-import { orange } from "@material-ui/core/colors";
 import { Azamat, Kevin, Nicole, Oladimeji, Pamela } from "../assets/images/images";
 import SlideObj from "../types";
 
