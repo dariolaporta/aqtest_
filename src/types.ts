@@ -6,6 +6,7 @@ type SlideObj = {
     bg_sx: string;
     bg_dx: string;
     dx_text: DxText;
+    count?: string;
 }
 
 type DxText = {

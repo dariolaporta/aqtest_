@@ -6,6 +6,6 @@ export const Indicator = styled.div`
     background-color: ${props => props.color};
     margin: 10px;
     opacity: ${props => props.theme.opacity};
-    transition: 0.2;
+    transition: 1s;
 `;
 

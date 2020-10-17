@@ -57,7 +57,7 @@ class App extends Component<Props, State> {
     ));
   };
 
-  renderSlides = () => {
+  renderSlide = () => {
     const element = slidesArray[this.state.activeIndex];
     return (
       <SlideScreen
@@ -68,11 +68,23 @@ class App extends Component<Props, State> {
         img_sx={element.img_sx}
         custom_title={element.custom_title}
         dx_text={this.renderDxText(element)}
+        increase={this.increaseIndex}
+        decrease={this.decreaseIndex}
+        activeIndex={this.state.activeIndex + 1}
+        totalItems={slidesArray.length}
       />
     );
   };
 
-  changeIndex = () => {};
+  increaseIndex = () => {
+    const count = this.state.activeIndex + 1;
+    this.setState({ activeIndex: count < 5 ? count : this.state.activeIndex });
+  };
+
+  decreaseIndex = () => {
+    const count = this.state.activeIndex - 1;
+    this.setState({ activeIndex: count > 0 ? count : 0 });
+  };
 
   render() {
     const { viewWidth } = this.state;
@@ -80,7 +92,7 @@ class App extends Component<Props, State> {
       <div className="App">
         <Header />
         <Cursor />
-        {this.renderSlides()}
+        {this.renderSlide()}
         <div
           style={{
             position: "fixed",

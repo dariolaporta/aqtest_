@@ -17,3 +17,13 @@ export const TopHeader = styled.div`
     padding: 20px;
     font-family: Tungsten Semi-Bold;
 `
+
+export const Typer = styled.p`
+    width: 50ch;
+    animation: typing 2s steps(50);
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0; 
+    font-size: 13px; 
+    letter-spacing: 1px;
+`

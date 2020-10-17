@@ -77,3 +77,22 @@
   transform: translate(-50%, -50%) scale(0.9);
   background-color: #fefefe;
 }
+
+.rotate-y,
+.rotate-x {
+  transition: 0.2s ease;
+}
+
+.rotate-y:hover {
+  transform: rotateY(45deg);
+}
+
+.rotate-x:hover {
+  transform: rotateY(-45deg);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}

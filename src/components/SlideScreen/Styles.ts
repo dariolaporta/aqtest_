@@ -87,9 +87,9 @@ export const ParagraphTng = styled.p`
     margin-top: 20px;
     font-family: Tungsten Bold;
     letter-spacing: 1px;
-    display: "flex",
-    justify-content: "flex-end",
-    align-items: "center",
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 `
 
 export const TopImageContainer = styled.div`
@@ -102,4 +102,13 @@ export const TopImageContainer = styled.div`
     max-width: 300px;
     display: flex;
     justify-content: center;
+`
+
+export const Count = styled.p`
+    position: absolute;
+    color: white;
+    font-family: Roboto;
+    right: 0;
+    z-index: 90;
+    font-size: 10px;
 `
