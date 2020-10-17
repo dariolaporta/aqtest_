@@ -107,13 +107,7 @@ const SlideScreen = (props: Props) => {
           <Paragraph>{dx_text.writer}</Paragraph>
           <Paragraph>{dx_text.date}</Paragraph>
           <div>
-            <ParagraphTng
-            // style={{
-            //   display: "flex",
-            //   justifyContent: "flex-end",
-            //   alignItems: "center",
-            // }}
-            >
+            <ParagraphTng>
               {dx_text.link}
               <ArrowRightAltIcon style={{ marginLeft: 10 }} />
             </ParagraphTng>
