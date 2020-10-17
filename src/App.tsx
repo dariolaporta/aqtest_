@@ -1,10 +1,21 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
+import Header from "./components/Header/Header";
 import Slide from "./components/Slide/Slide";
 import { slidesArray } from "./constants/constants";
+import SlideObj from "./types";
 
-function App() {
-  const renderSlides = () => {
+class App extends Component {
+  renderDxText = (slide: SlideObj) => {
+    let obj = {
+      writer: slide.dx_text.writer,
+      date: slide.dx_text.date,
+      link: slide.dx_text.link,
+    };
+    return obj;
+  };
+
+  renderSlides = () => {
     return slidesArray.map((slide, index) => (
       <Slide
         key={index}
@@ -14,11 +25,18 @@ function App() {
         img_dx={slide.img_dx}
         img_sx={slide.img_sx}
         custom_title={slide.custom_title}
+        dx_text={this.renderDxText(slide)}
       />
     ));
   };
-
-  return <div className="App">{renderSlides()}</div>;
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        {this.renderSlides()}
+      </div>
+    );
+  }
 }
 
 export default App;

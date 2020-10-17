@@ -1,9 +1,8 @@
-import React from "react"
 import styled from "styled-components"
 
 export const TitleContainer = styled.div`
     position: absolute;
-    left: -50%;
+    left: -40%;
     right: 0px;
     margin-right: auto;
     margin-left: auto;
@@ -17,7 +16,7 @@ export const CustomTitle = styled.div`
     position: relative;
     color: white;
     font-family: "Tungsten Bold";
-    font-size: 120px;
+    font-size: 15vmin;
     text-transform: uppercase;
     text-align: left;
     letter-spacing: 5px;
@@ -32,7 +31,7 @@ export const CustomTitle = styled.div`
         transform: translateY(-50%);
         background-color: transparent;
         color: transparent;
-        font-size: 120px;
+        font-size: 15vmin;
         -webkit-text-stroke: 1px #fff;
         z-index: 999;
         line-height: 1;
@@ -43,23 +42,23 @@ export const CustomTitle = styled.div`
 export const DivDx = styled.div`
     background-color: ${props => props.color};
     flex: 1;
+    flex-direction: column;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 `
 
 export const DivSx = styled.div`
     background-color: ${props => props.color};
     width: 45%;
     flex-direction: column;
-    flex: 1;
     display: flex;
     justify-content: space-between;
 `
 
 export const ImgDivSx = styled.div`
-    width: 300px;
-    height: 300px;
+    width: 40vmin;
+    height: 40vmin;
     opacity: 0.2;
     border-radius: 100%;
     background-image: url(${props => props.theme.img_sx});
@@ -68,11 +67,17 @@ export const ImgDivSx = styled.div`
     background-size: cover;
 `
 export const ImgDivDx = styled.div`
-    width: 200px;
-    height: 200px;
+    width: 30vmin;
+    height: 30vmin;
     opacity: 0.2;
     background-image: url(${props => props.theme.img_dx});
     background-position: center; 
     background-repeat: no-repeat;
     background-size: cover;
+`
+
+export const Paragraph = styled.p`
+    font-size: 10px;
+    margin-top: 20px;
+    font-family: Roboto;
 `

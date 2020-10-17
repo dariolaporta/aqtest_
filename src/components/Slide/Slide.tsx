@@ -5,8 +5,10 @@ import {
   DivSx,
   ImgDivDx,
   ImgDivSx,
+  Paragraph,
   TitleContainer,
 } from "./Styles";
+import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
 interface Props {
   big_image_url: string;
@@ -15,10 +17,23 @@ interface Props {
   custom_title: string;
   img_dx: string;
   img_sx: string;
+  dx_text: {
+    writer: string;
+    date: string;
+    link: string | Element;
+  };
 }
 
 const Slide = (props: Props) => {
-  const { big_image_url, bg_sx, bg_dx, img_dx, img_sx, custom_title } = props;
+  const {
+    big_image_url,
+    bg_sx,
+    bg_dx,
+    img_dx,
+    img_sx,
+    custom_title,
+    dx_text,
+  } = props;
   ImgDivSx.defaultProps = {
     theme: {
       img_sx: img_sx,
@@ -49,6 +64,7 @@ const Slide = (props: Props) => {
           right: 0,
           marginLeft: "auto",
           marginRight: "auto",
+          zIndex: 80,
         }}
       >
         <img className="image" src={big_image_url} />
@@ -60,10 +76,39 @@ const Slide = (props: Props) => {
           <ImgDivSx />
         </div>
       </DivSx>
-      <DivDx color={bg_sx}>
-        <div style={{ flex: 1 }}></div>
-        <div style={{ flex: 1 }}>
+      <DivDx style={{ display: "flex", flex: 1 }} color={bg_sx}>
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            justifyContent: "flex-end",
+            marginRight: 30,
+          }}
+        >
           <ImgDivDx />
+        </div>
+        <div style={{ flex: 1 }}></div>
+        <div
+          style={{
+            flex: 1,
+            color: "white",
+            textAlign: "right",
+            padding: 30,
+          }}
+        >
+          <Paragraph>{dx_text.writer}</Paragraph>
+          <Paragraph>{dx_text.date}</Paragraph>
+          <div>
+            <Paragraph
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+              }}
+            >
+              {dx_text.link} <ArrowRightAltIcon style={{ marginLeft: 10 }} />
+            </Paragraph>
+          </div>
         </div>
       </DivDx>
     </div>

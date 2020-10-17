@@ -5,6 +5,13 @@ type SlideObj = {
     img_dx: string;
     bg_sx: string;
     bg_dx: string;
+    dx_text: DxText;
+}
+
+type DxText = {
+    writer: string;
+    date: string;
+    link: string;
 }
 
 export default SlideObj
