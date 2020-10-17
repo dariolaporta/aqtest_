@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Cursor from "./components/Cursor/Cursor";
 import Header from "./components/Header/Header";
-import Slide from "./components/Slide/Slide";
+import SlideScreen from "./components/SlideScreen/SlideScreen";
 import StepIndicator from "./components/StepIndicator/StepIndicator";
 import { palette, slidesArray } from "./constants/constants";
 import SlideObj from "./types";
@@ -60,7 +60,7 @@ class App extends Component<Props, State> {
   renderSlides = () => {
     const element = slidesArray[this.state.activeIndex];
     return (
-      <Slide
+      <SlideScreen
         big_image_url={element.big_image_url}
         bg_sx={element.bg_sx}
         bg_dx={element.bg_dx}

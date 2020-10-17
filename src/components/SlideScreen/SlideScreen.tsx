@@ -11,6 +11,7 @@ import {
   TopImageContainer,
 } from "./Styles";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import { Fade, Grow, Slide } from "@material-ui/core";
 
 interface Props {
   big_image_url: string;
@@ -26,7 +27,7 @@ interface Props {
   };
 }
 
-const Slide = (props: Props) => {
+const SlideScreen = (props: Props) => {
   const {
     big_image_url,
     bg_sx,
@@ -57,29 +58,43 @@ const Slide = (props: Props) => {
   return (
     <div style={{ display: "flex", flex: 1, position: "relative" }}>
       <TitleContainer>
-        <CustomTitle>{custom_title}</CustomTitle>
+        <Slide
+          direction="right"
+          in={true}
+          mountOnEnter
+          unmountOnExit
+          timeout={1000}
+        >
+          <CustomTitle>{custom_title}</CustomTitle>
+        </Slide>
       </TitleContainer>
-      <TopImageContainer>
-        <img className="image" src={big_image_url} />
-      </TopImageContainer>
+      <Slide direction="up" in={true} mountOnEnter unmountOnExit timeout={1000}>
+        <TopImageContainer>
+          <img className="image" src={big_image_url} />
+        </TopImageContainer>
+      </Slide>
       <DivSx color={bg_dx}>
         <div style={{ flex: 1 }}></div>
         <div style={{ flex: 1 }}></div>
-        <div style={{ flex: 1 }}>
-          <ImgDivSx className="image" />
-        </div>
+        <Grow in={true} timeout={2000}>
+          <div style={{ flex: 1 }}>
+            <ImgDivSx className="image" />
+          </div>
+        </Grow>
       </DivSx>
       <DivDx style={{ display: "flex", flex: 1 }} color={bg_sx}>
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            justifyContent: "flex-end",
-            marginRight: 30,
-          }}
-        >
-          <ImgDivDx className="image" />
-        </div>
+        <Grow in={true} timeout={2000}>
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              justifyContent: "flex-end",
+              marginRight: 30,
+            }}
+          >
+            <ImgDivDx className="image" />
+          </div>
+        </Grow>
         <div style={{ flex: 1 }}></div>
         <div
           style={{
@@ -109,4 +124,4 @@ const Slide = (props: Props) => {
   );
 };
 
-export default Slide;
+export default SlideScreen;
