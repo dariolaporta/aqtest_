@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SlideObj from "../../types";
 import { Indicator } from "./Styles";
 

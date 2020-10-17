@@ -11,7 +11,7 @@ import {
   TopImageContainer,
 } from "./Styles";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
-import { Fade, Grow, Slide } from "@material-ui/core";
+import { Grow, Slide } from "@material-ui/core";
 
 interface Props {
   big_image_url: string;
@@ -70,7 +70,7 @@ const SlideScreen = (props: Props) => {
       </TitleContainer>
       <Slide direction="up" in={true} mountOnEnter unmountOnExit timeout={1000}>
         <TopImageContainer>
-          <img className="image" src={big_image_url} />
+          <img alt="main" className="image" src={big_image_url} />
         </TopImageContainer>
       </Slide>
       <DivSx color={bg_dx}>
@@ -108,11 +108,11 @@ const SlideScreen = (props: Props) => {
           <Paragraph>{dx_text.date}</Paragraph>
           <div>
             <ParagraphTng
-              style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
-              }}
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "flex-end",
+            //   alignItems: "center",
+            // }}
             >
               {dx_text.link}
               <ArrowRightAltIcon style={{ marginLeft: 10 }} />

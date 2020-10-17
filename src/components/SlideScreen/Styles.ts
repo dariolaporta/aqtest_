@@ -87,6 +87,9 @@ export const ParagraphTng = styled.p`
     margin-top: 20px;
     font-family: Tungsten Bold;
     letter-spacing: 1px;
+    display: "flex",
+    justify-content: "flex-end",
+    align-items: "center",
 `
 
 export const TopImageContainer = styled.div`
