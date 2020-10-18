@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Cursor from "./components/Cursor/Cursor";
 import Header from "./components/Header/Header";
+import ProgressRing from "./components/ProgressRing/ProgressRing";
 import SlideScreen from "./components/SlideScreen/SlideScreen";
 import StepIndicator from "./components/StepIndicator/StepIndicator";
 import { palette, slidesArray } from "./constants/constants";
@@ -10,6 +11,7 @@ import SlideObj from "./types";
 interface State {
   activeIndex: number;
   viewWidth: number;
+  progress: number;
 }
 
 interface Props {}
@@ -20,6 +22,7 @@ class App extends Component<Props, State> {
     this.state = {
       activeIndex: 0,
       viewWidth: 0,
+      progress: 4,
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -27,6 +30,13 @@ class App extends Component<Props, State> {
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
+
+    // emulating progress
+    const interval = setInterval(() => {
+      this.setState({ progress: this.state.progress + 10 });
+      if (this.state.progress === 100) clearInterval(interval);
+    }, 1000);
+    return clearInterval(interval);
   }
 
   componentWillUnmount() {
@@ -106,6 +116,9 @@ class App extends Component<Props, State> {
         >
           {this.renderIndicators()}
         </div>
+        {/* <div style={{ position: "absolute", zIndex: 9999, top: 0 }}>
+          <ProgressRing radius={10} stroke={4} progress={this.state.progress} />
+        </div> */}
       </div>
     );
   }

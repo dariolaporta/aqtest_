@@ -1,4 +1,6 @@
+import { relative } from "path";
 import React, { useEffect, useState } from "react";
+import ProgressRing from "../ProgressRing/ProgressRing";
 const classNames = require("classnames");
 
 const Cursor = () => {
@@ -65,8 +67,16 @@ const Cursor = () => {
   return (
     <div
       className={cursorClasses}
-      style={{ left: `${position.x}px`, top: `${position.y}px` }}
-    ></div>
+      style={{
+        position: "relative",
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+      }}
+    >
+      <div style={{ position: "absolute", top: -2 }}>
+        <ProgressRing radius={22} stroke={1} progress={100} />
+      </div>
+    </div>
   );
 };
 
