@@ -1,12 +1,11 @@
 import styled from "styled-components"
 
 export const TopHeader = styled.div`
-    width: 100%;
+    width: auto;
     height: auto;
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
     z-index: 999;
     display: flex;
     color: white;
