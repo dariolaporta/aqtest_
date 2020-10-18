@@ -83,21 +83,30 @@ class App extends Component<Props, State> {
 
   increaseIndex = () => {
     const count = this.state.activeIndex + 1;
-    const interval = 100 / slidesArray.length + 10;
+    const total = slidesArray.length - 1;
+    const interval = 100 / total;
     const progress = this.state.progress + interval;
-    this.setState({
-      activeIndex: count < slidesArray.length ? count : this.state.activeIndex,
-      progress: progress < 100 ? progress : 100,
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        activeIndex:
+          count < slidesArray.length ? count : this.state.activeIndex,
+        progress: prevState.progress < 100 ? progress : 100,
+      };
     });
   };
 
   decreaseIndex = () => {
     const count = this.state.activeIndex - 1;
-    const interval = 100 / slidesArray.length + 10;
+    const total = slidesArray.length - 1;
+    const interval = 100 / total;
     const progress = this.state.progress - interval;
-    this.setState({
-      activeIndex: count > 0 ? count : 0,
-      progress: progress > 0 ? progress : 0,
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        activeIndex: count > 0 ? count : 0,
+        progress: prevState.progress > 0 ? progress : 0,
+      };
     });
   };
 
