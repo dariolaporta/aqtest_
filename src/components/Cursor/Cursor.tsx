@@ -1,4 +1,3 @@
-import { relative } from "path";
 import React, { useEffect, useState } from "react";
 import ProgressRing from "../ProgressRing/ProgressRing";
 const classNames = require("classnames");
