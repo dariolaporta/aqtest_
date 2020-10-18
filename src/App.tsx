@@ -32,11 +32,11 @@ class App extends Component<Props, State> {
     window.addEventListener("resize", this.updateWindowDimensions);
 
     // emulating progress
-    const interval = setInterval(() => {
-      this.setState({ progress: this.state.progress + 10 });
-      if (this.state.progress === 100) clearInterval(interval);
-    }, 1000);
-    return clearInterval(interval);
+    // const interval = setInterval(() => {
+    //   this.setState({ progress: this.state.progress + 10 });
+    //   if (this.state.progress === 100) clearInterval(interval);
+    // }, 1000);
+    // return clearInterval(interval);
   }
 
   componentWillUnmount() {
@@ -98,6 +98,7 @@ class App extends Component<Props, State> {
 
   render() {
     const { viewWidth } = this.state;
+    console.log(this.state.progress);
     return (
       <div className="App">
         <Header />

@@ -41,7 +41,8 @@
 .cursor {
   width: 40px;
   height: 40px;
-  border: 1px solid #ebdc58;
+  /* border: 1px solid #ebdc58; */
+  border: 1px solid slategrey;
   border-radius: 100%;
   position: fixed;
   transform: translate(-50%, -50%);

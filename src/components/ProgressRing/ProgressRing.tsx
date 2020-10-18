@@ -27,12 +27,11 @@ export default class ProgressRing extends Component<Props, {}> {
     return (
       <svg height={radius * 2} width={radius * 2}>
         <circle
-          stroke="white"
+          stroke="#ebdc58"
           fill="transparent"
           strokeWidth={stroke}
           strokeDasharray={this.circumference + " " + this.circumference}
           style={{ strokeDashoffset }}
-          stroke-width={stroke}
           r={this.normalizedRadius}
           cx={radius}
           cy={radius}

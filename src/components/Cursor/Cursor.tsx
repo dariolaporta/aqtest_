@@ -74,7 +74,7 @@ const Cursor = () => {
       }}
     >
       <div style={{ position: "absolute", top: -2 }}>
-        <ProgressRing radius={22} stroke={1} progress={100} />
+        <ProgressRing radius={22} stroke={1} progress={10} />
       </div>
     </div>
   );
