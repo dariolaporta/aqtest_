@@ -40,37 +40,3 @@ export default class ProgressRing extends Component<Props, {}> {
     );
   }
 }
-
-//   class Example extends React.Component {
-//     constructor(props) {
-//       super(props);
-
-//       this.state = {
-//         progress: 0
-//       };
-//     }
-
-//     componentDidMount() {
-//       // emulating progress
-//       const interval = setInterval(() => {
-//         this.setState({ progress: this.state.progress + 10 });
-//         if (this.state.progress === 100)
-//           clearInterval(interval);
-//       }, 1000);
-//     }
-
-//     render() {
-//       return (
-//         <ProgressRing
-//           radius={ 60 }
-//           stroke={ 4 }
-//           progress={ this.state.progress }
-//         />
-//       );
-//     }
-//   }
-
-//   ReactDOM.render(
-//    <Example />,
-//     document.getElementById('example')
-//   );

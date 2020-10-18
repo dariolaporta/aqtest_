@@ -30,6 +30,7 @@ interface Props {
   decrease: () => void;
   activeIndex: number;
   totalItems: number;
+  smallScreen: boolean;
 }
 
 const SlideScreen = (props: Props) => {
@@ -43,6 +44,7 @@ const SlideScreen = (props: Props) => {
     dx_text,
     activeIndex,
     totalItems,
+    smallScreen,
   } = props;
   ImgDivSx.defaultProps = {
     theme: {
@@ -76,11 +78,25 @@ const SlideScreen = (props: Props) => {
         </Slide>
         <Count>{activeIndex + "/" + totalItems}</Count>
       </TitleContainer>
-      <Slide direction="up" in={true} mountOnEnter unmountOnExit timeout={1000}>
-        <TopImageContainer>
-          <img alt="main" className="image" src={big_image_url} />
-        </TopImageContainer>
-      </Slide>
+      <TopImageContainer>
+        <Grow in={true} timeout={2000}>
+          <div style={{ color: "white" }}>
+            <img alt="main" className="image" src={big_image_url} />
+            {smallScreen && (
+              <>
+                <Paragraph>{dx_text.writer}</Paragraph>
+                <Paragraph>{dx_text.date}</Paragraph>
+                <div style={{ textAlign: "center" }}>
+                  <ParagraphTng style={{ justifyContent: "center" }}>
+                    {dx_text.link}
+                    <ArrowRightAltIcon />
+                  </ParagraphTng>
+                </div>
+              </>
+            )}
+          </div>
+        </Grow>
+      </TopImageContainer>
       <DivSx color={bg_dx}>
         <div style={{ flex: 1 }}></div>
         <div style={{ flex: 1 }}></div>
@@ -94,41 +110,65 @@ const SlideScreen = (props: Props) => {
         </Grow>
       </DivSx>
       <DivDx style={{ display: "flex", flex: 1 }} color={bg_sx}>
-        <Grow in={true} timeout={2000}>
-          <div
-            style={{
-              flex: 1,
-              display: "flex",
-              justifyContent: "flex-end",
-              marginRight: 30,
-            }}
-          >
-            <ImgDivDx
-              className="image"
-              onClick={() => props.increase && props.increase()}
-            />
-          </div>
-        </Grow>
-        <div style={{ flex: 1 }}></div>
-        <Slide in={true} direction="left" timeout={1000}>
-          <div
-            style={{
-              flex: 1,
-              color: "white",
-              textAlign: "right",
-              padding: 30,
-            }}
-          >
-            <Paragraph>{dx_text.writer}</Paragraph>
-            <Paragraph>{dx_text.date}</Paragraph>
-            <div>
-              <ParagraphTng>
-                {dx_text.link}
-                <ArrowRightAltIcon style={{ marginLeft: 10 }} />
-              </ParagraphTng>
+        {!smallScreen && (
+          <Grow in={true} timeout={2000}>
+            <div
+              style={{
+                flex: 1,
+                display: "flex",
+                justifyContent: "flex-end",
+                marginRight: 30,
+              }}
+            >
+              <ImgDivDx
+                className="image"
+                onClick={() => props.increase && props.increase()}
+              />
             </div>
-          </div>
-        </Slide>
+          </Grow>
+        )}
+        <div style={{ flex: 1 }}></div>
+        {smallScreen && (
+          <>
+            <div style={{ flex: 1 }}></div>
+            <Grow in={true} timeout={2000}>
+              <div
+                style={{
+                  flex: 1,
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  marginRight: 30,
+                }}
+              >
+                <ImgDivDx
+                  className="image"
+                  onClick={() => props.increase && props.increase()}
+                />
+              </div>
+            </Grow>
+          </>
+        )}
+        {!smallScreen && (
+          <Slide in={true} direction="left" timeout={1000}>
+            <div
+              style={{
+                flex: 1,
+                color: "white",
+                textAlign: "right",
+                padding: 30,
+              }}
+            >
+              <Paragraph>{dx_text.writer}</Paragraph>
+              <Paragraph>{dx_text.date}</Paragraph>
+              <div>
+                <ParagraphTng>
+                  {dx_text.link}
+                  <ArrowRightAltIcon style={{ marginLeft: 10 }} />
+                </ParagraphTng>
+              </div>
+            </div>
+          </Slide>
+        )}
       </DivDx>
     </div>
   );

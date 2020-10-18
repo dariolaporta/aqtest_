@@ -60,6 +60,7 @@ class App extends Component<Props, State> {
   };
 
   renderSlide = () => {
+    const { viewWidth } = this.state;
     const element = slidesArray[this.state.activeIndex];
     return (
       <SlideScreen
@@ -74,6 +75,7 @@ class App extends Component<Props, State> {
         decrease={this.decreaseIndex}
         activeIndex={this.state.activeIndex + 1}
         totalItems={slidesArray.length}
+        smallScreen={viewWidth < 500}
       />
     );
   };
@@ -103,7 +105,7 @@ class App extends Component<Props, State> {
     return (
       <div className="App">
         <Header />
-        <Cursor progress={this.state.progress} />
+        {viewWidth > 1036 && <Cursor progress={this.state.progress} />}
         {this.renderSlide()}
         <div
           style={{
