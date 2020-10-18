@@ -7,6 +7,7 @@ type SlideObj = {
     bg_dx: string;
     dx_text: DxText;
     count?: string;
+    stepper_color: string;
 }
 
 type DxText = {

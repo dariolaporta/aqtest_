@@ -24,7 +24,8 @@ export const slidesArray: SlideObj[] = [
         writer: "Luca Viperti \n for vogue magazine",
         date: "July 2019",
         link: "HAVE A LOOK"
-      }
+      },
+      stepper_color: palette.bg_sand,
     },
     {
       big_image_url: Pamela,
@@ -37,7 +38,8 @@ export const slidesArray: SlideObj[] = [
         writer: "Carol Smith \n for Elle decor",
         date: "January 2019",
         link: "HAVE A LOOK"
-      }
+      },
+      stepper_color: palette.bg_leaves,
     },
     {
       big_image_url: Kevin,
@@ -50,7 +52,8 @@ export const slidesArray: SlideObj[] = [
         writer: "Andrea Schiavone \n for Harpers Bazar",
         date: "November 2019",
         link: "HAVE A LOOK"
-      }
+      },
+      stepper_color: palette.bg_sand
     },
     {
       big_image_url: Azamat,
@@ -63,7 +66,8 @@ export const slidesArray: SlideObj[] = [
         writer: "Maria Grazie Cirri \n for vogue UK magazine",
         date: "October 2018",
         link: "HAVE A LOOK"
-      }
+      },
+      stepper_color: palette.bg_pink
     },
     {
       big_image_url: Nicole,
@@ -76,7 +80,8 @@ export const slidesArray: SlideObj[] = [
         writer: "Giorgia Mentana \n for Grazia magazine",
         date: "July 2018",
         link: "HAVE A LOOK"
-      }
+      },
+      stepper_color: palette.bg_brown
     },
   ];
 
