@@ -17,7 +17,7 @@ const Cursor = (props: Props) => {
     addEventListeners();
     handleLinkHoverEvents();
     return () => removeEventListeners();
-  }, []);
+  });
 
   const addEventListeners = () => {
     document.addEventListener("mousemove", onMouseMove);

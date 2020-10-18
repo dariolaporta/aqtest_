@@ -1,4 +1,4 @@
-import { Fade, Slide } from "@material-ui/core";
+import { Slide } from "@material-ui/core";
 import React from "react";
 import { TopHeader, Typer } from "./Styles";
 
