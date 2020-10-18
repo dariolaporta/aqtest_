@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Cursor from "./components/Cursor/Cursor";
 import Header from "./components/Header/Header";
-import ProgressRing from "./components/ProgressRing/ProgressRing";
 import SlideScreen from "./components/SlideScreen/SlideScreen";
 import StepIndicator from "./components/StepIndicator/StepIndicator";
 import { palette, slidesArray } from "./constants/constants";
@@ -22,7 +21,7 @@ class App extends Component<Props, State> {
     this.state = {
       activeIndex: 0,
       viewWidth: 0,
-      progress: 4,
+      progress: 0,
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -30,13 +29,6 @@ class App extends Component<Props, State> {
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
-
-    // emulating progress
-    // const interval = setInterval(() => {
-    //   this.setState({ progress: this.state.progress + 10 });
-    //   if (this.state.progress === 100) clearInterval(interval);
-    // }, 1000);
-    // return clearInterval(interval);
   }
 
   componentWillUnmount() {
@@ -88,21 +80,30 @@ class App extends Component<Props, State> {
 
   increaseIndex = () => {
     const count = this.state.activeIndex + 1;
-    this.setState({ activeIndex: count < 5 ? count : this.state.activeIndex });
+    const interval = 100 / slidesArray.length + 10;
+    const progress = this.state.progress + interval;
+    this.setState({
+      activeIndex: count < slidesArray.length ? count : this.state.activeIndex,
+      progress: progress < 100 ? progress : 100,
+    });
   };
 
   decreaseIndex = () => {
     const count = this.state.activeIndex - 1;
-    this.setState({ activeIndex: count > 0 ? count : 0 });
+    const interval = 100 / slidesArray.length + 10;
+    const progress = this.state.progress - interval;
+    this.setState({
+      activeIndex: count > 0 ? count : 0,
+      progress: progress > 0 ? progress : 0,
+    });
   };
 
   render() {
     const { viewWidth } = this.state;
-    console.log(this.state.progress);
     return (
       <div className="App">
         <Header />
-        <Cursor />
+        <Cursor progress={this.state.progress} />
         {this.renderSlide()}
         <div
           style={{
@@ -117,9 +118,6 @@ class App extends Component<Props, State> {
         >
           {this.renderIndicators()}
         </div>
-        {/* <div style={{ position: "absolute", zIndex: 9999, top: 0 }}>
-          <ProgressRing radius={10} stroke={4} progress={this.state.progress} />
-        </div> */}
       </div>
     );
   }

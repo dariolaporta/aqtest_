@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react";
 import ProgressRing from "../ProgressRing/ProgressRing";
 const classNames = require("classnames");
 
-const Cursor = () => {
+interface Props {
+  progress: number;
+}
+
+const Cursor = (props: Props) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const { progress } = props;
 
   useEffect(() => {
     addEventListeners();
@@ -67,13 +72,12 @@ const Cursor = () => {
     <div
       className={cursorClasses}
       style={{
-        position: "relative",
         left: `${position.x}px`,
         top: `${position.y}px`,
       }}
     >
       <div style={{ position: "absolute", top: -2 }}>
-        <ProgressRing radius={22} stroke={1.2} progress={10} />
+        <ProgressRing radius={22} stroke={1.2} progress={progress} />
       </div>
     </div>
   );
