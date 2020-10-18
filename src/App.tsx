@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import SlideScreen from "./components/SlideScreen/SlideScreen";
 import StepIndicator from "./components/StepIndicator/StepIndicator";
 import { palette, slidesArray } from "./constants/constants";
+import { AppWrapper } from "./Styles";
 import SlideObj from "./types";
 
 interface State {
@@ -102,24 +103,19 @@ class App extends Component<Props, State> {
 
   render() {
     const { viewWidth } = this.state;
+    AppWrapper.defaultProps = {
+      theme: {
+        justify: viewWidth > 500 ? "flex-end" : "center",
+      },
+    };
     return (
       <div className="App">
         <Header />
         {viewWidth > 1036 && <Cursor progress={this.state.progress} />}
         {this.renderSlide()}
-        <div
-          style={{
-            position: "fixed",
-            right: 20,
-            left: 0,
-            display: "flex",
-            justifyContent: viewWidth > 500 ? "flex-end" : "center",
-            zIndex: 9999,
-            bottom: 20,
-          }}
-        >
+        <AppWrapper className="app-wrapper">
           {this.renderIndicators()}
-        </div>
+        </AppWrapper>
       </div>
     );
   }

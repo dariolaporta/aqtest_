@@ -1,5 +1,11 @@
 import styled from "styled-components"
 
+export const SlideWrapper = styled.div`
+    display: flex; 
+    flex: 1; 
+    position: relative; 
+`
+
 export const TitleContainer = styled.div`
     position: absolute;
     left: -40%;
@@ -8,6 +14,20 @@ export const TitleContainer = styled.div`
     margin-left: auto;
     top: 20%;
     max-width: 30vw;  
+`
+
+export const ImageWrapper = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30px;
+`
+
+export const CaptionsWrapper = styled.div`
+    flex: 1;
+    color: white;
+    text-align: right;
+    padding: 30px;
 `
 
 export const CustomTitle = styled.div`

@@ -1,18 +1,22 @@
 import React from "react";
 import {
+  CaptionsWrapper,
   Count,
   CustomTitle,
   DivDx,
   DivSx,
+  ImageWrapper,
   ImgDivDx,
   ImgDivSx,
   Paragraph,
   ParagraphTng,
+  SlideWrapper,
   TitleContainer,
   TopImageContainer,
 } from "./Styles";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import { Grow, Slide } from "@material-ui/core";
+import { FlexElement } from "../../Styles";
 
 interface Props {
   big_image_url: string;
@@ -65,7 +69,7 @@ const SlideScreen = (props: Props) => {
   };
 
   return (
-    <div style={{ display: "flex", flex: 1, position: "relative" }}>
+    <SlideWrapper>
       <TitleContainer>
         <Slide
           direction="right"
@@ -98,66 +102,46 @@ const SlideScreen = (props: Props) => {
         </Grow>
       </TopImageContainer>
       <DivSx color={bg_dx}>
-        <div style={{ flex: 1 }}></div>
-        <div style={{ flex: 1 }}></div>
+        <FlexElement />
+        <FlexElement />
         <Grow in={true} timeout={2000}>
-          <div style={{ flex: 1 }}>
+          <FlexElement>
             <ImgDivSx
               className="image"
               onClick={() => props.decrease && props.decrease()}
             />
-          </div>
+          </FlexElement>
         </Grow>
       </DivSx>
       <DivDx style={{ display: "flex", flex: 1 }} color={bg_sx}>
         {!smallScreen && (
           <Grow in={true} timeout={2000}>
-            <div
-              style={{
-                flex: 1,
-                display: "flex",
-                justifyContent: "flex-end",
-                marginRight: 30,
-              }}
-            >
+            <ImageWrapper>
               <ImgDivDx
                 className="image"
                 onClick={() => props.increase && props.increase()}
               />
-            </div>
+            </ImageWrapper>
           </Grow>
         )}
-        <div style={{ flex: 1 }}></div>
+        <FlexElement />
+
         {smallScreen && (
           <>
-            <div style={{ flex: 1 }}></div>
+            <FlexElement />
             <Grow in={true} timeout={2000}>
-              <div
-                style={{
-                  flex: 1,
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  marginRight: 30,
-                }}
-              >
+              <ImageWrapper>
                 <ImgDivDx
                   className="image"
                   onClick={() => props.increase && props.increase()}
                 />
-              </div>
+              </ImageWrapper>
             </Grow>
           </>
         )}
         {!smallScreen && (
           <Slide in={true} direction="left" timeout={1000}>
-            <div
-              style={{
-                flex: 1,
-                color: "white",
-                textAlign: "right",
-                padding: 30,
-              }}
-            >
+            <CaptionsWrapper>
               <Paragraph>{dx_text.writer}</Paragraph>
               <Paragraph>{dx_text.date}</Paragraph>
               <div>
@@ -166,11 +150,11 @@ const SlideScreen = (props: Props) => {
                   <ArrowRightAltIcon style={{ marginLeft: 10 }} />
                 </ParagraphTng>
               </div>
-            </div>
+            </CaptionsWrapper>
           </Slide>
         )}
       </DivDx>
-    </div>
+    </SlideWrapper>
   );
 };
 

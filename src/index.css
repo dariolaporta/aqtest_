@@ -6,6 +6,12 @@ body {
   cursor: none;
 }
 
+@media only screen and (max-width: 1036px) {
+  body {
+    cursor: pointer;
+  }
+}
+
 @font-face {
   font-family: "Roboto";
   font-style: "regular";
