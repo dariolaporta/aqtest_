@@ -19,8 +19,8 @@ export const TopHeader = styled.div`
 `
 
 export const Typer = styled.p`
-    width: 50ch;
-    animation: typing 2s steps(50);
+    width: ${props => props.theme.stringLength}ch;
+    animation: typing 2s steps(${props => props.theme.stringLength});
     white-space: nowrap;
     overflow: hidden;
     margin: 0; 

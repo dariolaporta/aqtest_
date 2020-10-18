@@ -3,6 +3,12 @@ import React from "react";
 import { TopHeader, Typer } from "./Styles";
 
 const Header = () => {
+  const str = "STYLING & PHOTOGRAPHY COLLECTIVE";
+  Typer.defaultProps = {
+    theme: {
+      stringLength: str.length + 3,
+    },
+  };
   return (
     <TopHeader>
       <Slide
@@ -13,7 +19,7 @@ const Header = () => {
       >
         <p> -DON'T</p>
       </Slide>
-      <Typer>STYLING & PHOTOGRAPHY COLLECTIVE</Typer>
+      <Typer>{str}</Typer>
     </TopHeader>
   );
 };
