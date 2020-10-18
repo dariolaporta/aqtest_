@@ -87,8 +87,8 @@ export const ImgDivSx = styled.div`
     background-size: cover;
 `
 export const ImgDivDx = styled.div`
-    width: 30vmin;
-    height: 30vmin;
+    width: 40vmin;
+    height: 40vmin;
     opacity: 0.2;
     background-image: url(${props => props.theme.img_dx});
     background-position: center; 
