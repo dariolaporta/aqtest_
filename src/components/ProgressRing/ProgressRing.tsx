@@ -29,7 +29,7 @@ export default class ProgressRing extends Component<Props, {}> {
     return (
       <svg height={radius * 2} width={radius * 2}>
         <circle
-          stroke="#ebdc58"
+          stroke="#f1b648"
           fill="transparent"
           strokeWidth={stroke}
           strokeDasharray={this.circumference + " " + this.circumference}
