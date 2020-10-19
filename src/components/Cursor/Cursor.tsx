@@ -6,7 +6,7 @@ interface Props {
   progress: number;
 }
 
-const Cursor = (props: Props) => {
+function Cursor(props: Props) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
@@ -81,6 +81,6 @@ const Cursor = (props: Props) => {
       </div>
     </div>
   );
-};
+}
 
 export default Cursor;

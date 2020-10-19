@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const AppWrapper = styled.div`
+export const BottomWrapper = styled.div`
     position: fixed;
     right: 20px;
     left: 0;

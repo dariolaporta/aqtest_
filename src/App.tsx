@@ -9,7 +9,7 @@ import {
   slidesArray,
   TOTAL_PROGRESS_CURSOR,
 } from "./constants/constants";
-import { AppWrapper } from "./Styles";
+import { BottomWrapper } from "./Styles";
 import SlideObj from "./types";
 
 interface State {
@@ -93,12 +93,8 @@ class App extends Component<Props, State> {
     this.setState((prevState) => {
       return {
         ...prevState,
-        activeIndex:
-          count < slidesArray.length ? count : this.state.activeIndex,
-        progress:
-          prevState.progress < TOTAL_PROGRESS_CURSOR
-            ? progress
-            : TOTAL_PROGRESS_CURSOR,
+        activeIndex: count < slidesArray.length ? count : 0,
+        progress: count < slidesArray.length ? progress : 0,
       };
     });
   };
@@ -111,15 +107,15 @@ class App extends Component<Props, State> {
     this.setState((prevState) => {
       return {
         ...prevState,
-        activeIndex: count > 0 ? count : 0,
-        progress: prevState.progress > 0 ? progress : 0,
+        activeIndex: count >= 0 ? count : total,
+        progress: count >= 0 ? progress : TOTAL_PROGRESS_CURSOR,
       };
     });
   };
 
   render() {
     const { viewWidth } = this.state;
-    AppWrapper.defaultProps = {
+    BottomWrapper.defaultProps = {
       theme: {
         justify: viewWidth > 500 ? "flex-end" : "center",
       },
@@ -129,9 +125,7 @@ class App extends Component<Props, State> {
         <Header />
         {viewWidth > 1036 && <Cursor progress={this.state.progress} />}
         {this.renderSlide()}
-        <AppWrapper className="app-wrapper">
-          {this.renderIndicators()}
-        </AppWrapper>
+        <BottomWrapper>{this.renderIndicators()}</BottomWrapper>
       </div>
     );
   }

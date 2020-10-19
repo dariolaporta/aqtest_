@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import {
   CaptionsWrapper,
   Count,
@@ -17,7 +17,6 @@ import {
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import { Grow, Slide } from "@material-ui/core";
 import { FlexElement } from "../../Styles";
-import gsap from "gsap";
 
 interface Props {
   big_image_url: string;
@@ -38,7 +37,7 @@ interface Props {
   smallScreen: boolean;
 }
 
-const SlideScreen = (props: Props) => {
+function SlideScreen(props: Props) {
   const {
     big_image_url,
     bg_sx,
@@ -51,15 +50,6 @@ const SlideScreen = (props: Props) => {
     totalItems,
     smallScreen,
   } = props;
-  const animatable = useRef(null);
-  useEffect(() => {
-    console.log("hey");
-    gsap.fromTo(
-      animatable.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1 }
-    );
-  }, [big_image_url]);
 
   ImgDivSx.defaultProps = {
     theme: {
@@ -95,7 +85,7 @@ const SlideScreen = (props: Props) => {
       </TitleContainer>
       <TopImageContainer>
         <Grow in={true} timeout={2000}>
-          <div ref={animatable} style={{ color: "white" }}>
+          <div style={{ color: "white" }}>
             <img alt="main" className="image" src={big_image_url} />
             {smallScreen && (
               <>
@@ -167,6 +157,6 @@ const SlideScreen = (props: Props) => {
       </DivDx>
     </SlideWrapper>
   );
-};
+}
 
 export default SlideScreen;
