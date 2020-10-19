@@ -11,6 +11,7 @@ export const palette = {
 
 }
 
+export const TOTAL_PROGRESS_CURSOR = 100
 
 export const slidesArray: SlideObj[] = [
     {

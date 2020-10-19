@@ -4,7 +4,11 @@ import Cursor from "./components/Cursor/Cursor";
 import Header from "./components/Header/Header";
 import SlideScreen from "./components/SlideScreen/SlideScreen";
 import StepIndicator from "./components/StepIndicator/StepIndicator";
-import { palette, slidesArray } from "./constants/constants";
+import {
+  palette,
+  slidesArray,
+  TOTAL_PROGRESS_CURSOR,
+} from "./constants/constants";
 import { AppWrapper } from "./Styles";
 import SlideObj from "./types";
 
@@ -84,14 +88,17 @@ class App extends Component<Props, State> {
   increaseIndex = () => {
     const count = this.state.activeIndex + 1;
     const total = slidesArray.length - 1;
-    const interval = 100 / total;
+    const interval = TOTAL_PROGRESS_CURSOR / total;
     const progress = this.state.progress + interval;
     this.setState((prevState) => {
       return {
         ...prevState,
         activeIndex:
           count < slidesArray.length ? count : this.state.activeIndex,
-        progress: prevState.progress < 100 ? progress : 100,
+        progress:
+          prevState.progress < TOTAL_PROGRESS_CURSOR
+            ? progress
+            : TOTAL_PROGRESS_CURSOR,
       };
     });
   };
@@ -99,7 +106,7 @@ class App extends Component<Props, State> {
   decreaseIndex = () => {
     const count = this.state.activeIndex - 1;
     const total = slidesArray.length - 1;
-    const interval = 100 / total;
+    const interval = TOTAL_PROGRESS_CURSOR / total;
     const progress = this.state.progress - interval;
     this.setState((prevState) => {
       return {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { TOTAL_PROGRESS_CURSOR } from "../../constants/constants";
 
 interface Props {
   radius: number;
@@ -22,7 +23,8 @@ export default class ProgressRing extends Component<Props, {}> {
     const { radius, stroke, progress } = this.props;
 
     const strokeDashoffset =
-      this.circumference - (progress / 100) * this.circumference;
+      this.circumference -
+      (progress / TOTAL_PROGRESS_CURSOR) * this.circumference;
 
     return (
       <svg height={radius * 2} width={radius * 2}>
