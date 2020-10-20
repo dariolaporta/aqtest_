@@ -24,11 +24,11 @@ interface Props {}
 
 class App extends Component<Props, State> {
   arrayOfImages = [
-    `http://localhost:3000/oladimeji.jpg`,
-    `http://localhost:3000/nicole.jpg`,
-    `http://localhost:3000/pamela.jpg`,
-    `http://localhost:3000/azamat.jpg`,
-    `http://localhost:3000/kevin.jpg`,
+    `${process.env.PUBLIC_URL}/oladimeji.jpg`,
+    `${process.env.PUBLIC_URL}/nicole.jpg`,
+    `${process.env.PUBLIC_URL}/pamela.jpg`,
+    `${process.env.PUBLIC_URL}/azamat.jpg`,
+    `${process.env.PUBLIC_URL}/kevin.jpg`,
   ];
   constructor(props: Props) {
     super(props);
