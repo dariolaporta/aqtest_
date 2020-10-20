@@ -53,10 +53,8 @@ class App extends Component<Props, State> {
       return new Promise((resolve, reject) => {
         const img: any = new Image();
         img.src = src;
-        setTimeout(() => {
-          img.onload = resolve();
-          img.onerror = reject();
-        }, 2000);
+        img.onload = resolve();
+        img.onerror = reject();
       });
     });
     await Promise.all(promises);
