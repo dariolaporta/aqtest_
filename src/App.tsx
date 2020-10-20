@@ -16,25 +16,52 @@ interface State {
   activeIndex: number;
   viewWidth: number;
   progress: number;
+  loading: boolean;
+  items: SlideObj[];
 }
 
 interface Props {}
 
 class App extends Component<Props, State> {
+  arrayOfImages = [
+    `http://localhost:3000/oladimeji.jpg`,
+    `http://localhost:3000/nicole.jpg`,
+    `http://localhost:3000/pamela.jpg`,
+    `http://localhost:3000/azamat.jpg`,
+    `http://localhost:3000/kevin.jpg`,
+  ];
   constructor(props: Props) {
     super(props);
     this.state = {
       activeIndex: 0,
       viewWidth: 0,
       progress: 0,
+      loading: true,
+      items: [],
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    await this.cacheImages(this.arrayOfImages);
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
   }
+
+  cacheImages = async (srcArray: string[]) => {
+    const promises = await srcArray.map((src) => {
+      return new Promise((resolve, reject) => {
+        const img: any = new Image();
+        img.src = src;
+        setTimeout(() => {
+          img.onload = resolve();
+          img.onerror = reject();
+        }, 2000);
+      });
+    });
+    await Promise.all(promises);
+    this.setState({ loading: false, items: slidesArray });
+  };
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWindowDimensions);
@@ -65,8 +92,8 @@ class App extends Component<Props, State> {
   };
 
   renderSlide = () => {
-    const { viewWidth } = this.state;
-    const element = slidesArray[this.state.activeIndex];
+    const { viewWidth, items } = this.state;
+    const element = items[this.state.activeIndex];
     return (
       <SlideScreen
         big_image_url={element.big_image_url}
@@ -86,22 +113,24 @@ class App extends Component<Props, State> {
   };
 
   increaseIndex = () => {
+    const { items } = this.state;
     const count = this.state.activeIndex + 1;
-    const total = slidesArray.length - 1;
+    const total = items.length - 1;
     const interval = TOTAL_PROGRESS_CURSOR / total;
     const progress = this.state.progress + interval;
     this.setState((prevState) => {
       return {
         ...prevState,
-        activeIndex: count < slidesArray.length ? count : 0,
-        progress: count < slidesArray.length ? progress : 0,
+        activeIndex: count < items.length ? count : 0,
+        progress: count < items.length ? progress : 0,
       };
     });
   };
 
   decreaseIndex = () => {
+    const { items } = this.state;
     const count = this.state.activeIndex - 1;
-    const total = slidesArray.length - 1;
+    const total = items.length - 1;
     const interval = TOTAL_PROGRESS_CURSOR / total;
     const progress = this.state.progress - interval;
     this.setState((prevState) => {
@@ -114,19 +143,25 @@ class App extends Component<Props, State> {
   };
 
   render() {
-    const { viewWidth } = this.state;
+    const { viewWidth, loading } = this.state;
     BottomWrapper.defaultProps = {
       theme: {
         justify: viewWidth > 500 ? "flex-end" : "center",
       },
     };
+    console.log(loading);
     return (
-      <div className="App">
-        <Header />
-        {viewWidth > 1036 && <Cursor progress={this.state.progress} />}
-        {this.renderSlide()}
-        <BottomWrapper>{this.renderIndicators()}</BottomWrapper>
-      </div>
+      <>
+        {loading && <div>loading....</div>}
+        {!loading && (
+          <div className="App">
+            <Header />
+            {viewWidth > 1036 && <Cursor progress={this.state.progress} />}
+            {this.renderSlide()}
+            <BottomWrapper>{this.renderIndicators()}</BottomWrapper>
+          </div>
+        )}
+      </>
     );
   }
 }

@@ -81,7 +81,7 @@ export const ImgDivSx = styled.div`
     height: 40vmin;
     opacity: 0.2;
     border-radius: 100%;
-    background-image: url(${props => props.theme.img_sx});
+    background-image: url(${process.env.PUBLIC_URL}${props => props.theme.img_sx});
     background-position: center; 
     background-repeat: no-repeat;
     background-size: cover;
@@ -90,7 +90,7 @@ export const ImgDivDx = styled.div`
     width: 40vmin;
     height: 40vmin;
     opacity: 0.2;
-    background-image: url(${props => props.theme.img_dx});
+    background-image: url(${process.env.PUBLIC_URL}${props => props.theme.img_dx});
     background-position: center; 
     background-repeat: no-repeat;
     background-size: cover;

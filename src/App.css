@@ -30,7 +30,7 @@
   transform: translate(-50%, -50%);
   pointer-events: none;
   transition: all 150ms ease;
-  transition-property: background-color, opacity, transform, mix-blend-mode;
+  /* transition-property: background-color, opacity, transform, mix-blend-mode; */
   z-index: 9999;
   display: flex;
   justify-content: center;
