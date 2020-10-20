@@ -150,15 +150,17 @@ class App extends Component<Props, State> {
     console.log(loading);
     return (
       <>
-        {loading && <div>loading....</div>}
-        {!loading && (
-          <div className="App">
-            <Header />
-            {viewWidth > 1036 && <Cursor progress={this.state.progress} />}
-            {this.renderSlide()}
-            <BottomWrapper>{this.renderIndicators()}</BottomWrapper>
-          </div>
-        )}
+        <div className="App">
+          {loading && <div className="overlay">loading....</div>}
+          {!loading && (
+            <div>
+              <Header />
+              {viewWidth > 1036 && <Cursor progress={this.state.progress} />}
+              {this.renderSlide()}
+              <BottomWrapper>{this.renderIndicators()}</BottomWrapper>
+            </div>
+          )}
+        </div>
       </>
     );
   }
