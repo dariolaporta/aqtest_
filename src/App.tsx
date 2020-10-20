@@ -147,7 +147,6 @@ class App extends Component<Props, State> {
         justify: viewWidth > 500 ? "flex-end" : "center",
       },
     };
-    console.log(loading);
     return (
       <>
         <div className="App">
