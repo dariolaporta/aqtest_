@@ -53,7 +53,7 @@ function SlideScreen(props: Props) {
   } = props;
 
   const divSxAnimation = useRef(null);
-
+  const flipImage = useRef(null);
   ImgDivSx.defaultProps = {
     theme: {
       img_sx: img_sx,
@@ -72,14 +72,28 @@ function SlideScreen(props: Props) {
     },
   };
 
+  TopImageContainer.defaultProps = {
+    theme: {
+      big_image_url: big_image_url,
+    },
+  };
+
   useEffect(() => {
-    const animation = gsap.to(divSxAnimation.current, {
+    gsap.to(divSxAnimation.current, {
       width: "40%",
       duration: "2s",
     });
-    animation.restart();
-    console.log("asdasdas");
   }, [big_image_url]);
+
+  const animate = () => {
+    const tl = gsap.timeline();
+    tl.to(flipImage.current, {
+      scale: 1.2,
+      duration: 0.2,
+    }).to(flipImage.current, {
+      scale: 1,
+    });
+  };
 
   return (
     <SlideWrapper>
@@ -89,16 +103,17 @@ function SlideScreen(props: Props) {
           in={true}
           mountOnEnter
           unmountOnExit
-          timeout={1000}
+          timeout={500}
         >
           <CustomTitle>{custom_title}</CustomTitle>
         </Slide>
         <Count>{activeIndex + "/" + totalItems}</Count>
       </TitleContainer>
-      <TopImageContainer>
-        <Grow in={true} timeout={2000}>
-          <div style={{ color: "white" }}>
-            <img alt="main" className="image" src={big_image_url} />
+      <Grow in={true} timeout={2000}>
+        <TopImageContainer ref={flipImage} className="image">
+          <div
+            style={{ color: "white", position: "absolute", bottom: "-43% " }}
+          >
             {smallScreen && (
               <>
                 <Paragraph>{dx_text.writer}</Paragraph>
@@ -112,8 +127,8 @@ function SlideScreen(props: Props) {
               </>
             )}
           </div>
-        </Grow>
-      </TopImageContainer>
+        </TopImageContainer>
+      </Grow>
       <DivSx ref={divSxAnimation} color={bg_dx}>
         <FlexElement />
         <FlexElement />
@@ -132,7 +147,10 @@ function SlideScreen(props: Props) {
             <ImageWrapper>
               <ImgDivDx
                 className="image"
-                onClick={() => props.increase && props.increase()}
+                onClick={() => {
+                  props.increase && props.increase();
+                  animate();
+                }}
               />
             </ImageWrapper>
           </Grow>

@@ -117,10 +117,15 @@ export const TopImageContainer = styled.div`
     position: absolute;
     left: 0;
     right: 0;
+    width: 60vmin;
+    background-image: url(${process.env.PUBLIC_URL}${props => props.theme.big_image_url});
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 1s ease!important;
     margin-left: auto;
     margin-right: auto;
     z-index: 80;
-    max-width: 300px;
     display: flex;
     justify-content: center;
 `
