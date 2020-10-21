@@ -70,11 +70,11 @@ export const DivDx = styled.div`
 
 export const DivSx = styled.div`
     background-color: ${props => props.color};
-    width: 90%;
+    width: 0;
     flex-direction: column;
     display: flex;
     justify-content: space-between;
-    transition: 0.5s;
+    transition: 0.5s ease-out;
 `
 
 export const ImgDivSx = styled.div`
