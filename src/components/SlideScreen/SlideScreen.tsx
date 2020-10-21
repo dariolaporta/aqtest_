@@ -74,7 +74,7 @@ function SlideScreen(props: Props) {
 
   useEffect(() => {
     const animation = gsap.to(divSxAnimation.current, {
-      width: "35%",
+      width: "40%",
       duration: "2s",
     });
     animation.restart();
