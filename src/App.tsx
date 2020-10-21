@@ -1,3 +1,4 @@
+import { Slide } from "@material-ui/core";
 import React, { Component } from "react";
 import "./App.css";
 import Cursor from "./components/Cursor/Cursor";
@@ -156,7 +157,9 @@ class App extends Component<Props, State> {
               <Header />
               {viewWidth > 1036 && <Cursor progress={this.state.progress} />}
               {this.renderSlide()}
-              <BottomWrapper>{this.renderIndicators()}</BottomWrapper>
+              <Slide in={true} direction="up" timeout={1000}>
+                <BottomWrapper>{this.renderIndicators()}</BottomWrapper>
+              </Slide>
             </div>
           )}
         </div>
