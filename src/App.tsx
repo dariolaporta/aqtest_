@@ -86,6 +86,10 @@ class App extends Component<Props, State> {
         color={this.state.activeIndex === index ? palette.orange : "white"}
         thickness={this.state.activeIndex === index ? 3 : 2}
         opacity={this.state.activeIndex === index ? 1 : 0.2}
+        translate={
+          this.state.activeIndex === index ? "translate 0.5s normal" : "none"
+        }
+        isBeforePresent={this.state.activeIndex === index ? true : false}
       />
     ));
   };

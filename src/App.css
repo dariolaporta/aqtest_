@@ -66,6 +66,27 @@
   }
 }
 
+@keyframes translate {
+  from {
+    transform: translateY(30px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes ani {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  } /* ignored */
+  to {
+    opacity: 0;
+  }
+}
+
 circle {
   transition: stroke-dashoffset 0.2s;
   transform: rotate(-90deg);

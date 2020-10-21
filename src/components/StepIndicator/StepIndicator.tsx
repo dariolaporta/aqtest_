@@ -7,15 +7,19 @@ interface Props {
   color?: string;
   thickness: number;
   opacity: number;
+  translate: string;
+  isBeforePresent: boolean;
 }
 
 const StepIndicator = (props: Props) => {
-  const { color, thickness, opacity } = props;
+  const { color, thickness, opacity, translate, isBeforePresent } = props;
 
   Indicator.defaultProps = {
     theme: {
       thickness: thickness,
       opacity: opacity,
+      translate: translate,
+      isBeforePresent: isBeforePresent,
     },
   };
 

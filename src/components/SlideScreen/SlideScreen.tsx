@@ -54,6 +54,7 @@ function SlideScreen(props: Props) {
 
   const divSxAnimation = useRef(null);
   const flipImage = useRef(null);
+  const captionsWrapper = useRef(null);
   ImgDivSx.defaultProps = {
     theme: {
       img_sx: img_sx,
@@ -93,6 +94,11 @@ function SlideScreen(props: Props) {
     }).to(flipImage.current, {
       scale: 1,
     });
+    gsap.fromTo(
+      captionsWrapper.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1 }
+    );
   };
 
   return (
@@ -172,7 +178,7 @@ function SlideScreen(props: Props) {
         )}
         {!smallScreen && (
           <Slide in={true} direction="left" timeout={1000}>
-            <CaptionsWrapper>
+            <CaptionsWrapper ref={captionsWrapper}>
               <Paragraph>{dx_text.writer}</Paragraph>
               <Paragraph>{dx_text.date}</Paragraph>
               <div>
